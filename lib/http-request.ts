@@ -3,7 +3,12 @@ import * as t from 'io-ts'
 import { flow, identity, pipe } from 'fp-ts/lib/function'
 import * as TE from 'fp-ts/TaskEither'
 import * as O from 'fp-ts/Option'
-import { toDecodingError, toUnauthorized, toUnknownError } from './error'
+import {
+  toDecodingError,
+  toNotFound,
+  toUnauthorized,
+  toUnknownError
+} from './error'
 
 const decodeReqError = (e: Error) =>
   pipe(
@@ -14,6 +19,8 @@ const decodeReqError = (e: Error) =>
       switch (response.status) {
         case 401:
           return toUnauthorized()
+        case 404:
+          return toNotFound()
         default:
           return toUnknownError()
       }

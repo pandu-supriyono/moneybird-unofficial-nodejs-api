@@ -43,3 +43,11 @@ export interface EmptyAdministrationId {
 export const toEmptyAdministrationId = (): EmptyAdministrationId => ({
   _tag: 'EmptyAdministrationId'
 })
+
+export interface NotFound {
+  _tag: 'NotFound'
+}
+
+export const toNotFound = (): NotFound => ({
+  _tag: 'NotFound'
+})
