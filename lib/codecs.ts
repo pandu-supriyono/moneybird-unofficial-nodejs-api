@@ -12,15 +12,16 @@ export const ListAdministrationsCodec = t.array(
   })
 )
 
-// const GetInvoiceCodec = t.type({
-//   id: t.string,
-//   administration_id: t.string,
-//   contact_id: t.string,
-//   contact: t.type({
-//     id: t.string,
-//     administration_id: t.string,
-//     company_name: t.string,
-//     firstname: nullOrString,
-//     lastname: nullOrString,
-//   })
-// })
+export const GetInvoiceCodec = t.type({
+  id: t.string,
+  administration_id: t.string,
+  contact_id: t.string,
+  contact: t.type({
+    id: t.string,
+    administration_id: t.string,
+    company_name: t.string,
+    firstname: nullOrString,
+    lastname: nullOrString
+  })
+  // TODO: the rest of the codec
+})

@@ -35,3 +35,11 @@ export interface UnknownError {
 export const toUnknownError = (): UnknownError => ({
   _tag: 'UnknownError'
 })
+
+export interface EmptyAdministrationId {
+  _tag: 'EmptyAdministrationId'
+}
+
+export const toEmptyAdministrationId = (): EmptyAdministrationId => ({
+  _tag: 'EmptyAdministrationId'
+})
