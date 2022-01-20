@@ -25,6 +25,6 @@ export default class MoneybirdClient {
   public getInvoiceByInvoiceId(invoiceId: string, administrationId?: string) {
     return getInvoiceByInvoiceId(administrationId)(invoiceId)(
       this.config
-    )().then(flow(flow(E.foldW((error) => new Error(error._tag), identity))))
+    )().then(flow(E.foldW((error) => new Error(error._tag), identity)))
   }
 }
