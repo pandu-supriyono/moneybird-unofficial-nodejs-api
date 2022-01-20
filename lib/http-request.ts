@@ -9,15 +9,14 @@ const decodeReqError = (e: Error) =>
   pipe(
     e,
     O.fromPredicate(axios.isAxiosError),
-    O.map((axiosError) => {
-      if (axiosError.response) {
-        switch (axiosError.response.status) {
-          case 401:
-            return toUnauthorized()
-        }
+    O.chain((axiosError) => O.fromNullable(axiosError.response)),
+    O.map((response) => {
+      switch (response.status) {
+        case 401:
+          return toUnauthorized()
+        default:
+          return toUnknownError()
       }
-
-      return toUnknownError()
     }),
     O.foldW(
       () => toUnknownError(),
